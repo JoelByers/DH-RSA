@@ -17,6 +17,7 @@ class RSA{
         int d;
         int modulus;
         void getKeys();
+        signed long gcdExtended(signed long x, signed long b, signed long* a, signed long* y);
 };
 
 #endif

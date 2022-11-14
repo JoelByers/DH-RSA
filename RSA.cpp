@@ -59,3 +59,25 @@ int RSA::getE(){
 int RSA::getD(){
     return RSA::d;
 }
+
+// Function for extended Euclidean Algorithm
+signed long RSA::gcdExtended(signed long x, signed long b, signed long* a, signed long* y)
+{
+
+	// Base Case
+	if (x == 0) {
+		*a = 0, *y = 1;
+		return b;
+	}
+
+	// To store results of recursive call
+	signed long x1, y1;
+	signed long gcd = gcdExtended(b % x, x, &x1, &y1);
+
+	// Update x and y using results of recursive
+	// call
+	*a = y1 - (b / x) * x1;
+	*y = x1;
+
+	return gcd;
+}
